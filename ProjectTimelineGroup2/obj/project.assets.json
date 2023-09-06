@@ -1,11 +1,30 @@
 {
   "version": 3,
   "targets": {
-    "net7.0-windows7.0": {}
+    "net7.0-windows7.0": {
+      "ProjectLibrary/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v7.0",
+        "compile": {
+          "bin/placeholder/ProjectLibrary.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/ProjectLibrary.dll": {}
+        }
+      }
+    }
   },
-  "libraries": {},
+  "libraries": {
+    "ProjectLibrary/1.0.0": {
+      "type": "project",
+      "path": "../ProjectLibrary/ProjectLibrary.csproj",
+      "msbuildProject": "../ProjectLibrary/ProjectLibrary.csproj"
+    }
+  },
   "projectFileDependencyGroups": {
-    "net7.0-windows7.0": []
+    "net7.0-windows7.0": [
+      "ProjectLibrary >= 1.0.0"
+    ]
   },
   "packageFolders": {
     "C:\\Users\\lab_services_student\\.nuget\\packages\\": {}
@@ -33,7 +52,11 @@
       "frameworks": {
         "net7.0-windows7.0": {
           "targetAlias": "net7.0-windows",
-          "projectReferences": {}
+          "projectReferences": {
+            "C:\\Users\\lab_services_student\\source\\repos\\ProjectTimelineGroup2\\ProjectLibrary\\ProjectLibrary.csproj": {
+              "projectPath": "C:\\Users\\lab_services_student\\source\\repos\\ProjectTimelineGroup2\\ProjectLibrary\\ProjectLibrary.csproj"
+            }
+          }
         }
       },
       "warningProperties": {

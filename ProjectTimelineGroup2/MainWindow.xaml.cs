@@ -23,6 +23,8 @@ namespace ProjectTimelineGroup2
         public MainWindow()
         {
             InitializeComponent();
+
+
         }
     }
 }
