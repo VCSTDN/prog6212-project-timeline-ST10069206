@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
+using System.Reflection.Metadata.Ecma335;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -11,9 +12,44 @@ namespace ProjectLibrary
 {
     public class Project
     {
-        public string ProjectCode { get; set; }
-        public string ProjectName { get; set; }
-        public DateTime StartDate { get; set; }
+        public string? ProjectCode { get; set; }
+        public string? ProjectName { get; set; }
+
+        public string name
+        {
+            get
+            {
+                return name;
+            }
+            set
+            {
+                if (name.Length < 3)
+                {
+                    throw new Exception("The project name should not be less than 3. ")
+                }
+            }
+        }
+
+        private DateTime startDate;
+        public DateTime StartDate 
+        {
+            get 
+            { 
+                return startDate; 
+            }
+            set 
+            { 
+                if (startDate>EndDate)
+                {
+                    throw new Exception($"Start date {startDate} should not be after end date.");
+                }
+                else
+                {
+                    startDate = value; 
+                }
+                
+            }
+        }
         public DateTime EndDate { get; set; }
         public int Duration { get; set; }
         public double EstimatedCost { get; set; }
@@ -31,15 +67,19 @@ namespace ProjectLibrary
 
         public double CalcEstimatedCost(double hourlyRate)
         {
-            EstimatedCost = hourlyRate * 8;
-            return EstimatedCost;
+            return (hourlyRate * 8) *Duration;
         }
 
         public override string ToString()
         {
-            return $"({ProjectCode}) {ProjectName} - {Duration}, EC:R{EstimatedCost}";
+            return $"({ProjectCode}) {ProjectName} - {Duration}, Estimated Cost: R{EstimatedCost.ToString("C2")}";
         }
 
+        /// <summary>
+        /// Indexer
+        /// </summary>
+        /// <param name="code"></param>
+        /// <returns></returns>
         public Project this[string code]
         {
             get
@@ -55,5 +95,6 @@ namespace ProjectLibrary
                 return pr;
             }
         }
+
     }
 }
