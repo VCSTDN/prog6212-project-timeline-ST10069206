@@ -13,19 +13,23 @@ namespace ProjectLibrary
     public class Project
     {
         public string? ProjectCode { get; set; }
-        public string? ProjectName { get; set; }
+        private string? projectName;
 
-        public string name
+        public string ProjectName
         {
             get
             {
-                return name;
+                return projectName;
             }
             set
             {
-                if (name.Length < 3)
+                if (ProjectName.Length < 3)
                 {
-                    throw new Exception("The project name should not be less than 3. ")
+                    throw new Exception("The project name should not be less than 3. ");
+                }
+                else
+                {
+                    ProjectName = value;
                 }
             }
         }
