@@ -57,7 +57,7 @@ namespace ProjectLibrary
         public DateTime EndDate { get; set; }
         public int Duration { get; set; }
         public double EstimatedCost { get; set; }
-        public List<Project> projectList { get; set; }
+        public List<Project> ProjectList { get; set; }
 
         public Project(string projectCode, string projectName, DateTime startDate, DateTime endDate)
         {
@@ -89,7 +89,7 @@ namespace ProjectLibrary
             get
             {
                 Project pr = new Project();
-                foreach (Project proj in projectList)
+                foreach (Project proj in ProjectList)
                 {
                     if (proj.ProjectCode.Equals(code))
                     {
@@ -100,5 +100,56 @@ namespace ProjectLibrary
             }
         }
 
+        public List<Project> GetProjectsBetween(DateTime sDate, DateTime eDate)
+        {
+            List<Project> projectsBetween = new List<Project>();
+            foreach(Project proj in ProjectList) 
+            {
+                if (proj.StartDate>=sDate && proj.StartDate<=eDate)
+                {
+                    projectsBetween.Add(proj);
+                }
+            }
+            return projectsBetween;
+        }
+
+        public List<Project> GetProjectsDuration()
+        {
+            List<Project> projectsDuration = new List<Project>();
+            foreach (Project proj in ProjectList)
+            {
+                if ((proj.Duration/5)>6)
+                {
+                    projectsDuration.Add(proj);
+                }
+            }
+            return projectsDuration;
+        }
+
+        public List<Project> GetProjectsEnded()
+        {
+            List<Project> projectsEnded = new List<Project>();
+            foreach (Project proj in ProjectList)
+            {
+                if (proj.EndDate<DateTime.Today)
+                {
+                    projectsEnded.Add(proj);
+                }
+            }
+            return projectsEnded;
+        }
+
+        public List<Project> GetProjectsMonth(int month) 
+        {
+            List<Project> projectsMonth = new List<Project>();
+            foreach (Project proj in ProjectList)
+            {
+                if (proj.StartDate.Month.Equals(month))
+                {
+                    projectsMonth.Add(proj);
+                }
+            }
+            return projectsMonth;
+        }
     }
 }
