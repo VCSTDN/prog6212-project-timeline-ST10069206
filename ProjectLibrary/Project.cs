@@ -100,6 +100,12 @@ namespace ProjectLibrary
             }
         }
 
+        /// <summary>
+        /// Method that returns a list of projects between a 2 dates. 
+        /// </summary>
+        /// <param name="sDate"></param>
+        /// <param name="eDate"></param>
+        /// <returns></returns>
         public List<Project> GetProjectsBetween(DateTime sDate, DateTime eDate)
         {
             List<Project> projectsBetween = new List<Project>();
@@ -113,6 +119,10 @@ namespace ProjectLibrary
             return projectsBetween;
         }
 
+        /// <summary>
+        /// Method that returns a list of projects which has a duration longer than 6 weeks. 
+        /// </summary>
+        /// <returns></returns>
         public List<Project> GetProjectsDuration()
         {
             List<Project> projectsDuration = new List<Project>();
@@ -126,6 +136,10 @@ namespace ProjectLibrary
             return projectsDuration;
         }
 
+        /// <summary>
+        /// Method that returns a list of projects which have ended. 
+        /// </summary>
+        /// <returns></returns>
         public List<Project> GetProjectsEnded()
         {
             List<Project> projectsEnded = new List<Project>();
@@ -139,6 +153,11 @@ namespace ProjectLibrary
             return projectsEnded;
         }
 
+        /// <summary>
+        /// Method that returns a list of projects which were started in a specific month. 
+        /// </summary>
+        /// <param name="month"></param>
+        /// <returns></returns>
         public List<Project> GetProjectsMonth(int month) 
         {
             List<Project> projectsMonth = new List<Project>();
