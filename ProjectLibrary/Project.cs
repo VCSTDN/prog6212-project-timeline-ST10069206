@@ -23,7 +23,7 @@ namespace ProjectLibrary
             }
             set
             {
-                if (ProjectName.Length < 3)
+                if (value.Trim().Length < 3)
                 {
                     throw new Exception("The project name should not be less than 3. ");
                 }
@@ -54,7 +54,37 @@ namespace ProjectLibrary
                 
             }
         }
-        public DateTime EndDate { get; set; }
+        /// <summary>
+        /// Delegate which points to DisplayNotifiction method. 
+        /// </summary>
+        /// <returns></returns>
+        public delegate string ProjectFiveDays();
+
+        /// <summary>
+        /// Display notifiction method
+        /// </summary>
+        /// <returns></returns>
+        public string DisplayNotification()
+        {
+            return "There is 5 days left before the projects end date.";   
+        }
+        /// <summary>
+        /// Event which notifys that the project has 5 days left before the end date. 
+        /// </summary>
+        public event ProjectFiveDays OnFiveDays;
+        private DateTime endDate;
+        public DateTime EndDate
+        {
+            get { return endDate; }
+            set
+            {
+                if ((endDate - DateTime.Today).Days.Equals(5))
+                {
+                    endDate = value;
+                    //OnFiveDays.Invoke((this.EndDate-DateTime.Today).Days, 5);
+                }
+            }
+        }
         public int Duration { get; set; }
         public double EstimatedCost { get; set; }
         public List<Project> ProjectList { get; set; }
@@ -170,5 +200,9 @@ namespace ProjectLibrary
             }
             return projectsMonth;
         }
+
+        //•	Create a delegate and event that will give notification when a project has 5 days left before it’s end date.
+
+
     }
 }

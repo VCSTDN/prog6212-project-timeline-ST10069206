@@ -1,0 +1,12 @@
+C:\Users\lab_services_student\source\repos\ProjectTimelineGroup2\ProjectLibrary\bin\Debug\net7.0\ProjectLibrary.deps.json
+C:\Users\lab_services_student\source\repos\ProjectTimelineGroup2\ProjectLibrary\bin\Debug\net7.0\ProjectLibrary.dll
+C:\Users\lab_services_student\source\repos\ProjectTimelineGroup2\ProjectLibrary\bin\Debug\net7.0\ProjectLibrary.pdb
+C:\Users\lab_services_student\source\repos\ProjectTimelineGroup2\ProjectLibrary\obj\Debug\net7.0\ProjectLibrary.csproj.AssemblyReference.cache
+C:\Users\lab_services_student\source\repos\ProjectTimelineGroup2\ProjectLibrary\obj\Debug\net7.0\ProjectLibrary.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\lab_services_student\source\repos\ProjectTimelineGroup2\ProjectLibrary\obj\Debug\net7.0\ProjectLibrary.AssemblyInfoInputs.cache
+C:\Users\lab_services_student\source\repos\ProjectTimelineGroup2\ProjectLibrary\obj\Debug\net7.0\ProjectLibrary.AssemblyInfo.cs
+C:\Users\lab_services_student\source\repos\ProjectTimelineGroup2\ProjectLibrary\obj\Debug\net7.0\ProjectLibrary.csproj.CoreCompileInputs.cache
+C:\Users\lab_services_student\source\repos\ProjectTimelineGroup2\ProjectLibrary\obj\Debug\net7.0\ProjectLibrary.dll
+C:\Users\lab_services_student\source\repos\ProjectTimelineGroup2\ProjectLibrary\obj\Debug\net7.0\refint\ProjectLibrary.dll
+C:\Users\lab_services_student\source\repos\ProjectTimelineGroup2\ProjectLibrary\obj\Debug\net7.0\ProjectLibrary.pdb
+C:\Users\lab_services_student\source\repos\ProjectTimelineGroup2\ProjectLibrary\obj\Debug\net7.0\ref\ProjectLibrary.dll

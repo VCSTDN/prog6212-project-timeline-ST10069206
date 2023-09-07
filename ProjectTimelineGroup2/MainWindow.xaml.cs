@@ -20,11 +20,23 @@ namespace ProjectTimelineGroup2
     /// </summary>
     public partial class MainWindow : Window
     {
+        CapturePage CaptureProject = new CapturePage();
+        Filter FilterProject = new Filter();
         public MainWindow()
         {
+            
             InitializeComponent();
 
 
+        }
+        private void btnCapture_Click(object sender, RoutedEventArgs e)
+        {
+            frmContainer.Content = CaptureProject;  
+        }
+
+        private void btnFilter_Click(object sender, RoutedEventArgs e)
+        {
+            frmContainer.Content=FilterProject; 
         }
     }
 }

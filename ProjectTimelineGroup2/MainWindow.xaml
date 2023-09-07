@@ -5,8 +5,18 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ProjectTimelineGroup2"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+        Title="MainWindow" Height="500" Width="1000">
     <Grid>
-
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="37*"/>
+            <ColumnDefinition Width="163*"/>
+        </Grid.ColumnDefinitions>
+        <Frame 
+            Name="frmContainer" 
+            Grid.Column="1"
+            Grid.Row="1"
+            NavigationUIVisibility="Hidden"/>
+        <Button x:Name="btnCapture" Content="Capture" HorizontalAlignment="Center" Margin="0,45,0,0" VerticalAlignment="Top" FontSize="20" BorderThickness="2" BorderBrush="Gray" Background="Lavender" Width="128" Click="btnCapture_Click"/>
+        <Button x:Name="btnFilter" Content="Filter" HorizontalAlignment="Center" Margin="0,121,0,0" VerticalAlignment="Top" RenderTransformOrigin="-0.512,0.524" FontSize="20" BorderThickness="2" BorderBrush="Gray" Background="Lavender" Width="128" Click="btnFilter_Click"/>
     </Grid>
 </Window>

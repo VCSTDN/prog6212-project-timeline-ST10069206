@@ -10,11 +10,11 @@ none
 false
 TRACE;DEBUG;NET;NET7_0;NETCOREAPP
 C:\Users\lab_services_student\source\repos\ProjectTimelineGroup2\ProjectTimelineGroup2\App.xaml
-11407045341
+3-542815318
 
-5-567811398
+7-650524292
 199-379109713
-MainWindow.xaml;
+CapturePage.xaml;Filter.xaml;MainWindow.xaml;
 
-False
+True
 
