@@ -26,6 +26,14 @@ namespace ProjectTimelineGroup2
             InitializeComponent();
         }
 
+        public void displayList(List<Project> projects)
+        {
+            foreach (Project p in projects)
+            {
+                dgvDisplay2.Items.Add(p);
+            }
+        }
+
         public void cmbFilter_SelectedChanged(object sender, EventArgs e)
         {
             dgvDisplay2.Items.Clear();
@@ -34,10 +42,7 @@ namespace ProjectTimelineGroup2
             if (cmbFilter.SelectedIndex ==0) 
             {
                 projects = Project.ProjectList;
-                foreach (Project p in projects)
-                {
-                    dgvDisplay2.Items.Add(p);
-                }
+                displayList(projects);
             }
             else if(cmbFilter.SelectedIndex == 1) 
             {
@@ -47,26 +52,17 @@ namespace ProjectTimelineGroup2
             else if (cmbFilter.SelectedIndex == 2)
             {
                 projects = Project.Completed();
-                foreach (Project p in projects)
-                {
-                    dgvDisplay2.Items.Add(p);
-                }
+                displayList(projects);
             }
             else if (cmbFilter.SelectedIndex == 3)
             {
                 projects = Project.MoreThanSixWeeks();
-                foreach (Project p in projects)
-                {
-                    dgvDisplay2.Items.Add(p);
-                }
+                displayList(projects);
             }
             else if (cmbFilter.SelectedIndex == 4)
             {
                 projects = pr.BetweenDates(Convert.ToDateTime("06-05-2023"),Convert.ToDateTime("06-12-2023"));
-                foreach (Project p in projects)
-                {
-                    dgvDisplay2.Items.Add(p);
-                }
+                displayList(projects);
             }
         }
         
