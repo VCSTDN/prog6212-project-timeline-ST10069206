@@ -35,8 +35,8 @@ namespace ProjectLibrary
             }
         }
 
-        private DateTime startDate;
-        public DateTime StartDate 
+        private static DateTime startDate;
+        public static DateTime StartDate 
         {
             get 
             { 
@@ -73,8 +73,8 @@ namespace ProjectLibrary
         /// Event which notifys that the project has 5 days left before the end date. 
         /// </summary>
         public event ProjectFiveDays OnFiveDays;
-        private DateTime endDate;
-        public DateTime EndDate
+        private static DateTime endDate;
+        public static DateTime EndDate
         {
             get { return endDate; }
             set
@@ -87,11 +87,19 @@ namespace ProjectLibrary
                 endDate = value;
             }
         }
-        public int Duration { get; set; }
-        public double EstimatedCost { get; set; }
-        public static List<Project> ProjectList = new List<Project>();
+        public static int Duration { get; set; }
+        public static double EstimatedCost { get; set; }
+        public static List<Project> ProjectList = new List<Project>()
+        {
+            new("P100", "Sony", Convert.ToDateTime("06-05-2023"),Convert.ToDateTime("16-06-2023"),150 ),
+            new("P101", "xbox", Convert.ToDateTime("09-10-2023"),Convert.ToDateTime("16-10-2023"),230 ),
+            new("P102", "Microsoft", Convert.ToDateTime("15-01-2023"),Convert.ToDateTime("19-03-2023"),180 ),
+            new("P103", "Nokia", Convert.ToDateTime("28-08-2023"),Convert.ToDateTime("26-09-2023"),190 ),
+            new("P104", "Panasonic", Convert.ToDateTime("07-02-2023"),Convert.ToDateTime("11-04-2023"),200 ),
+            new("P105", "Anglo", Convert.ToDateTime("02-12-2023"),Convert.ToDateTime("19-01-2024"),140 ),
+        };
 
-        public Project(string projectCode, string projectName, DateTime startDate, DateTime endDate)
+        public Project(string projectCode, string projectName, DateTime startDate, DateTime endDate, double rate)
         {
             ProjectCode = projectCode;
             ProjectName = projectName;
@@ -99,10 +107,11 @@ namespace ProjectLibrary
             EndDate = endDate;
             //Duration = (endDate.Date - startDate.Date).Days;
             Duration = GetDuration(StartDate, EndDate);
+            EstimatedCost=CalcEstimatedCost(rate);
         }
         public Project() { }
 
-        public double CalcEstimatedCost(double hourlyRate)
+        public static double CalcEstimatedCost(double hourlyRate)
         {
             return (hourlyRate * 8) *Duration;
         }
@@ -117,7 +126,7 @@ namespace ProjectLibrary
         /// </summary>
         /// <param name="code"></param>
         /// <returns></returns>
-        public Project this[string code]
+        public  Project this[string code]
         {
             get
             {
@@ -139,7 +148,7 @@ namespace ProjectLibrary
         /// <param name="sDate"></param>
         /// <param name="eDate"></param>
         /// <returns></returns>
-        public List<Project> GetProjectsBetween(DateTime sDate, DateTime eDate)
+        public static List<Project> GetProjectsBetween(DateTime sDate, DateTime eDate)
         {
             List<Project> projectsBetween = new List<Project>();
             foreach(Project proj in ProjectList) 
@@ -152,7 +161,7 @@ namespace ProjectLibrary
             return projectsBetween;
         }
 
-        public List<Project> BetweenDates(DateTime sDate, DateTime eDate)=>
+        public static List<Project> BetweenDates(DateTime sDate, DateTime eDate)=>
             (from p in ProjectList
              where p.StartDate >= sDate && StartDate <= eDate
              select p).ToList();
@@ -174,12 +183,12 @@ namespace ProjectLibrary
             return projectsDuration;
         }
 
-        public List<Project> MoreThanSixWeeks() =>
+        public static List<Project> MoreThanSixWeeks() =>
             (from p in ProjectList
              where (p.Duration / 5) > 6
              select p).ToList();
 
-        public int GetDuration(DateTime sDate, DateTime eDate) 
+        public static int GetDuration(DateTime sDate, DateTime eDate) 
         {
             int totalDays = 0;
             while(sDate!=eDate)
@@ -197,7 +206,7 @@ namespace ProjectLibrary
         /// Method that returns a list of projects which have ended. 
         /// </summary>
         /// <returns></returns>
-        public List<Project> GetProjectsEnded()
+        public static List<Project> GetProjectsEnded()
         {
             List<Project> projectsEnded = new List<Project>();
             foreach (Project proj in ProjectList)
@@ -210,7 +219,7 @@ namespace ProjectLibrary
             return projectsEnded;
         }
 
-        public List<Project> Completed() =>
+        public static List<Project> Completed() =>
             (from p in ProjectList
              where p.EndDate < DateTime.Today
              select p).ToList();
@@ -220,7 +229,7 @@ namespace ProjectLibrary
         /// </summary>
         /// <param name="month"></param>
         /// <returns></returns>
-        public List<Project> GetProjectsMonth(int month) 
+        public static List<Project> GetProjectsMonth(int month) 
         {
             List<Project> projectsMonth = new List<Project>();
             foreach (Project proj in ProjectList)

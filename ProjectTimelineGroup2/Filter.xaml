@@ -9,7 +9,15 @@
       Title="Filter">
 
     <Grid Background="White">
-        <DataGrid x:Name="dgvDisplay" >
+        <Grid.RowDefinitions>
+            <RowDefinition Height="61*"/>
+            <RowDefinition Height="164*"/>
+        </Grid.RowDefinitions>
+        <DataGrid 
+            x:Name="dgvDisplay2" 
+            Margin="0,0,0,0" 
+            Grid.Row="1" >
+            
             <DataGrid.Columns>
                 <DataGridTextColumn Header="Code" Width="*" Binding="{Binding ProjectCode}"/>
                 <DataGridTextColumn Header="Project Name" Width="*" Binding="{Binding ProjectName}"/>
@@ -19,5 +27,26 @@
                 <DataGridTextColumn Header="Estimated Cost" Width="*" Binding="{Binding EstimayedCost}"/>
             </DataGrid.Columns> "/>
         </DataGrid>
+        <Label x:Name="lblFilter" 
+               Content="Filter by: " 
+               HorizontalAlignment="Left" 
+               Margin="75,0,0,0" 
+               FontSize="20"
+               VerticalAlignment="Center"/>
+
+        <ComboBox x:Name="cmbFilter" 
+                  HorizontalAlignment="Left" 
+                  Margin="280,0,0,0" 
+                  VerticalAlignment="Center"
+                  FontSize="20"
+                  Width="120"
+                  SelectionChanged="cmbFilter_SelectedChanged">
+            <ComboBoxItem Content="All Projects"/>
+            <ComboBoxItem Content="View Project"/>
+            <ComboBoxItem Content="Prjects completed"/>
+            <ComboBoxItem Content="Projects more than six weeks"/>
+        </ComboBox>
+
+
     </Grid>
 </Page>

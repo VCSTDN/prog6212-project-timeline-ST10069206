@@ -26,12 +26,33 @@ namespace ProjectTimelineGroup2
             InitializeComponent();
         }
 
-        private void Page_Loaded(object sender, RoutedEventArgs e)
+        public void cmbFilter_SelectedChanged(object sender, EventArgs e)
         {
-            foreach(Project p in Project.ProjectList)
+            dgvDisplay2.Items.Clear();
+            List<Project> projects = new List<Project>();
+            Project pr=new Project();
+            if (cmbFilter.SelectedIndex ==0) 
             {
-                dgvDisplay.Items.Add(p);
+                projects = Project.ProjectList;
+            }
+            else if(cmbFilter.SelectedIndex == 1) 
+            {
+                pr = pr["P101"];
+                dgvDisplay2.Items.Add(pr);
+            }
+            else if (cmbFilter.SelectedIndex == 2)
+            {
+                projects = Project.Completed();
+            }
+            else if (cmbFilter.SelectedIndex == 3)
+            {
+                projects = Project.MoreThanSixWeeks();
+            }
+            else if (cmbFilter.SelectedIndex == 4)
+            {
+                projects = Project.BetweenDates(Convert.ToDateTime("06-05-2023"),Convert.ToDateTime("06-12-2023"));
             }
         }
+        
     }
 }

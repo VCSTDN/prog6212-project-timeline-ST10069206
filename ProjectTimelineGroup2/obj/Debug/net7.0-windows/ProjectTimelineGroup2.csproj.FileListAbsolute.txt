@@ -24,5 +24,7 @@ C:\Users\lab_services_student\source\repos\ProjectTimelineGroup2\ProjectTimeline
 C:\Users\lab_services_student\source\repos\ProjectTimelineGroup2\ProjectTimelineGroup2\obj\Debug\net7.0-windows\ref\ProjectTimelineGroup2.dll
 C:\Users\lab_services_student\source\repos\ProjectTimelineGroup2\ProjectTimelineGroup2\obj\Debug\net7.0-windows\CapturePage.g.cs
 C:\Users\lab_services_student\source\repos\ProjectTimelineGroup2\ProjectTimelineGroup2\obj\Debug\net7.0-windows\CapturePage.baml
+C:\Users\lab_services_student\source\repos\ProjectTimelineGroup2\ProjectTimelineGroup2\obj\Debug\net7.0-windows\Display.g.cs
+C:\Users\lab_services_student\source\repos\ProjectTimelineGroup2\ProjectTimelineGroup2\obj\Debug\net7.0-windows\Display.baml
 C:\Users\lab_services_student\source\repos\ProjectTimelineGroup2\ProjectTimelineGroup2\obj\Debug\net7.0-windows\Filter.g.cs
 C:\Users\lab_services_student\source\repos\ProjectTimelineGroup2\ProjectTimelineGroup2\obj\Debug\net7.0-windows\Filter.baml

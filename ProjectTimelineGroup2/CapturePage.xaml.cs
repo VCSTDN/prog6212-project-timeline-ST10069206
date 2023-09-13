@@ -28,13 +28,31 @@ namespace ProjectTimelineGroup2
 
         private void btnSave_Click(object sender, RoutedEventArgs e)
         {
-            Project p= new Project(txtCode.Text,txtName.Text,dateStart.SelectedDate.Value,dateEnd.SelectedDate.Value);
-            p.EstimatedCost=p.CalcEstimatedCost(Convert.ToDouble(txtRate.Text));
+            try
+            {
+                Project p = new Project(txtCode.Text, txtName.Text, dateStart.SelectedDate.Value, dateEnd.SelectedDate.Value,Convert.ToDouble(txtRate.Text));
+                
+                Project.ProjectList.Add(p);
 
-            Project.ProjectList.Add(p);
+                txtEC.Text = p.EstimatedCost.ToString();
+                txtDuration.Text = p.Duration.ToString();
+            }
+            catch (Exception ex)
+            {
 
-            txtEC.Text = p.EstimatedCost.ToString();
-            txtDuration.Text=p.Duration.ToString();
+                MessageBox.Show(ex.Message, this.Title, MessageBoxButton.OK, MessageBoxImage.Error);
+            }
+        }
+
+        private void btnClear_Click(object sender, RoutedEventArgs e)
+        {
+            txtCode.Clear();
+            txtDuration.Clear();
+            txtEC.Clear();
+            txtName.Clear();
+            txtRate.Clear();
+            dateEnd.SelectedDate = null; 
+            dateStart.SelectedDate=null;
         }
     }
 }

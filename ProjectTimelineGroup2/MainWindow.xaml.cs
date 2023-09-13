@@ -21,6 +21,7 @@ namespace ProjectTimelineGroup2
     public partial class MainWindow : Window
     {
         CapturePage CaptureProject = new CapturePage();
+        Display display = new Display();
         Filter FilterProject = new Filter();
         public MainWindow()
         {
@@ -34,9 +35,19 @@ namespace ProjectTimelineGroup2
             frmContainer.Content = CaptureProject;  
         }
 
+        private void btnDisplay_Click(object sender, RoutedEventArgs e)
+        {
+            frmContainer.Content= display; 
+        }
+
+        private void btnExit_Click(object sender, RoutedEventArgs e)
+        {
+            this.Close();
+        }
+
         private void btnFilter_Click(object sender, RoutedEventArgs e)
         {
-            frmContainer.Content=FilterProject; 
+            frmContainer.Content = FilterProject;
         }
     }
 }

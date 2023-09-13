@@ -10,12 +10,18 @@
     <Compile Update="CapturePage.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Update="Display.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Update="Filter.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
   </ItemGroup>
   <ItemGroup>
     <Page Update="CapturePage.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Display.xaml">
       <SubType>Designer</SubType>
     </Page>
     <Page Update="Filter.xaml">
