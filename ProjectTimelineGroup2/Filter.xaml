@@ -43,7 +43,7 @@
                   SelectionChanged="cmbFilter_SelectedChanged">
             <ComboBoxItem Content="All Projects"/>
             <ComboBoxItem Content="View Project"/>
-            <ComboBoxItem Content="Prjects completed"/>
+            <ComboBoxItem Content="Projects completed"/>
             <ComboBoxItem Content="Projects more than six weeks"/>
         </ComboBox>
 

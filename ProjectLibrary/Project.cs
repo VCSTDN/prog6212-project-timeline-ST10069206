@@ -35,8 +35,8 @@ namespace ProjectLibrary
             }
         }
 
-        private static DateTime startDate;
-        public static DateTime StartDate 
+        private DateTime startDate;
+        public DateTime StartDate 
         {
             get 
             { 
@@ -73,8 +73,8 @@ namespace ProjectLibrary
         /// Event which notifys that the project has 5 days left before the end date. 
         /// </summary>
         public event ProjectFiveDays OnFiveDays;
-        private static DateTime endDate;
-        public static DateTime EndDate
+        private DateTime endDate;
+        public DateTime EndDate
         {
             get { return endDate; }
             set
@@ -87,8 +87,8 @@ namespace ProjectLibrary
                 endDate = value;
             }
         }
-        public static int Duration { get; set; }
-        public static double EstimatedCost { get; set; }
+        public int Duration { get; set; }
+        public double EstimatedCost { get; set; }
         public static List<Project> ProjectList = new List<Project>()
         {
             new("P100", "Sony", Convert.ToDateTime("06-05-2023"),Convert.ToDateTime("16-06-2023"),150 ),
@@ -111,7 +111,7 @@ namespace ProjectLibrary
         }
         public Project() { }
 
-        public static double CalcEstimatedCost(double hourlyRate)
+        public double CalcEstimatedCost(double hourlyRate)
         {
             return (hourlyRate * 8) *Duration;
         }
@@ -148,7 +148,7 @@ namespace ProjectLibrary
         /// <param name="sDate"></param>
         /// <param name="eDate"></param>
         /// <returns></returns>
-        public static List<Project> GetProjectsBetween(DateTime sDate, DateTime eDate)
+        public List<Project> GetProjectsBetween(DateTime sDate, DateTime eDate)
         {
             List<Project> projectsBetween = new List<Project>();
             foreach(Project proj in ProjectList) 
@@ -161,7 +161,7 @@ namespace ProjectLibrary
             return projectsBetween;
         }
 
-        public static List<Project> BetweenDates(DateTime sDate, DateTime eDate)=>
+        public List<Project> BetweenDates(DateTime sDate, DateTime eDate)=>
             (from p in ProjectList
              where p.StartDate >= sDate && StartDate <= eDate
              select p).ToList();
