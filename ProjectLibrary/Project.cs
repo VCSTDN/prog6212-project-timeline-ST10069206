@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
 using System.Reflection.Metadata.Ecma335;
+using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -29,7 +30,7 @@ namespace ProjectLibrary
                 }
                 else
                 {
-                    ProjectName = value;
+                    projectName = value;
                 }
             }
         }
@@ -80,14 +81,15 @@ namespace ProjectLibrary
             {
                 if ((endDate - DateTime.Today).Days.Equals(5))
                 {
-                    endDate = value;
+                    
                     //OnFiveDays.Invoke((this.EndDate-DateTime.Today).Days, 5);
                 }
+                endDate = value;
             }
         }
         public int Duration { get; set; }
         public double EstimatedCost { get; set; }
-        public List<Project> ProjectList { get; set; }
+        public static List<Project> ProjectList = new List<Project>();
 
         public Project(string projectCode, string projectName, DateTime startDate, DateTime endDate)
         {
@@ -95,7 +97,8 @@ namespace ProjectLibrary
             ProjectName = projectName;
             StartDate = startDate;
             EndDate = endDate;
-            Duration = (endDate.Date - startDate.Date).Days;
+            //Duration = (endDate.Date - startDate.Date).Days;
+            Duration = GetDuration(StartDate, EndDate);
         }
         public Project() { }
 
@@ -149,6 +152,11 @@ namespace ProjectLibrary
             return projectsBetween;
         }
 
+        public List<Project> BetweenDates(DateTime sDate, DateTime eDate)=>
+            (from p in ProjectList
+             where p.StartDate >= sDate && StartDate <= eDate
+             select p).ToList();
+
         /// <summary>
         /// Method that returns a list of projects which has a duration longer than 6 weeks. 
         /// </summary>
@@ -164,6 +172,25 @@ namespace ProjectLibrary
                 }
             }
             return projectsDuration;
+        }
+
+        public List<Project> MoreThanSixWeeks() =>
+            (from p in ProjectList
+             where (p.Duration / 5) > 6
+             select p).ToList();
+
+        public int GetDuration(DateTime sDate, DateTime eDate) 
+        {
+            int totalDays = 0;
+            while(sDate!=eDate)
+            {
+                if(sDate.IsWorkingDay()) //if date is a working day then it will count the days. 
+                {
+                    totalDays++;
+                }
+                sDate= sDate.AddDays(1); //loop control variable. 
+            }
+            return totalDays;
         }
 
         /// <summary>
@@ -182,6 +209,11 @@ namespace ProjectLibrary
             }
             return projectsEnded;
         }
+
+        public List<Project> Completed() =>
+            (from p in ProjectList
+             where p.EndDate < DateTime.Today
+             select p).ToList();
 
         /// <summary>
         /// Method that returns a list of projects which were started in a specific month. 

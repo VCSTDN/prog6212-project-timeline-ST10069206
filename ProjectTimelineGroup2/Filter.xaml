@@ -9,6 +9,15 @@
       Title="Filter">
 
     <Grid Background="White">
-        
+        <DataGrid x:Name="dgvDisplay" >
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Code" Width="*" Binding="{Binding ProjectCode}"/>
+                <DataGridTextColumn Header="Project Name" Width="*" Binding="{Binding ProjectName}"/>
+                <DataGridTextColumn Header="Start Date" Width="*" Binding="{Binding StartDate}"/>
+                <DataGridTextColumn Header="End Date" Width="*" Binding="{Binding EndDate}"/>
+                <DataGridTextColumn Header="Duration" Width="*" Binding="{Binding Duration}"/>
+                <DataGridTextColumn Header="Estimated Cost" Width="*" Binding="{Binding EstimayedCost}"/>
+            </DataGrid.Columns> "/>
+        </DataGrid>
     </Grid>
 </Page>

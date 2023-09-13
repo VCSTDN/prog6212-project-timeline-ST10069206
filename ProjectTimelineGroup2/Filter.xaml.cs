@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ProjectLibrary;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -23,6 +24,14 @@ namespace ProjectTimelineGroup2
         public Filter()
         {
             InitializeComponent();
+        }
+
+        private void Page_Loaded(object sender, RoutedEventArgs e)
+        {
+            foreach(Project p in Project.ProjectList)
+            {
+                dgvDisplay.Items.Add(p);
+            }
         }
     }
 }

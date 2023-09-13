@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ProjectLibrary;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -23,6 +24,17 @@ namespace ProjectTimelineGroup2
         public CapturePage()
         {
             InitializeComponent();
+        }
+
+        private void btnSave_Click(object sender, RoutedEventArgs e)
+        {
+            Project p= new Project(txtCode.Text,txtName.Text,dateStart.SelectedDate.Value,dateEnd.SelectedDate.Value);
+            p.EstimatedCost=p.CalcEstimatedCost(Convert.ToDouble(txtRate.Text));
+
+            Project.ProjectList.Add(p);
+
+            txtEC.Text = p.EstimatedCost.ToString();
+            txtDuration.Text=p.Duration.ToString();
         }
     }
 }
