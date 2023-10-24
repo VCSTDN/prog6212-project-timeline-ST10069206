@@ -6,6 +6,7 @@ using System.Reflection.Metadata.Ecma335;
 using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
+using System.Data.SqlClient;
 
 //This is done if you have created a WPF first. 
 //copy namespace from the Class1 that VS created, then delete Class1. 
@@ -13,14 +14,17 @@ namespace ProjectLibrary
 {
     public class Project
     {
-        public string? ProjectCode { get; set; }
-        private string? projectName;
+        // connection string: 
+        static string strCon = "Data Source=(LocalDB)\\MSSQLLocalDB;Initial Catalog=ProjectDB;Integrated Security=True";
 
-        public string ProjectName
+        public string? ProjectCode { get; set; }
+        private string? ProjectName;
+
+        public string projectName
         {
             get
             {
-                return projectName;
+                return ProjectName;
             }
             set
             {
@@ -30,7 +34,7 @@ namespace ProjectLibrary
                 }
                 else
                 {
-                    projectName = value;
+                    ProjectName = value;
                 }
             }
         }
@@ -89,15 +93,17 @@ namespace ProjectLibrary
         }
         public int Duration { get; set; }
         public double EstimatedCost { get; set; }
-        public static List<Project> ProjectList = new List<Project>()
-        {
-            new("P100", "Sony", Convert.ToDateTime("06-05-2023"),Convert.ToDateTime("16-06-2023"),150 ),
-            new("P101", "xbox", Convert.ToDateTime("09-10-2023"),Convert.ToDateTime("16-10-2023"),230 ),
-            new("P102", "Microsoft", Convert.ToDateTime("15-01-2023"),Convert.ToDateTime("19-03-2023"),180 ),
-            new("P103", "Nokia", Convert.ToDateTime("28-08-2023"),Convert.ToDateTime("26-09-2023"),190 ),
-            new("P104", "Panasonic", Convert.ToDateTime("07-02-2023"),Convert.ToDateTime("11-04-2023"),200 ),
-            new("P105", "Anglo", Convert.ToDateTime("02-12-2023"),Convert.ToDateTime("19-01-2024"),140 ),
-        };
+
+        public static List<Project> ProjectList=new List<Project>();
+        //public static List<Project> ProjectList = new List<Project>()
+        //{
+        //    new("P100", "Sony", Convert.ToDateTime("06-05-2023"),Convert.ToDateTime("16-06-2023"),150 ),
+        //    new("P101", "xbox", Convert.ToDateTime("09-10-2023"),Convert.ToDateTime("16-10-2023"),230 ),
+        //    new("P102", "Microsoft", Convert.ToDateTime("15-01-2023"),Convert.ToDateTime("19-03-2023"),180 ),
+        //    new("P103", "Nokia", Convert.ToDateTime("28-08-2023"),Convert.ToDateTime("26-09-2023"),190 ),
+        //    new("P104", "Panasonic", Convert.ToDateTime("07-02-2023"),Convert.ToDateTime("11-04-2023"),200 ),
+        //    new("P105", "Anglo", Convert.ToDateTime("02-12-2023"),Convert.ToDateTime("19-01-2024"),140 ),
+        //};
 
         public Project(string projectCode, string projectName, DateTime startDate, DateTime endDate, double rate)
         {
@@ -110,6 +116,16 @@ namespace ProjectLibrary
             EstimatedCost=CalcEstimatedCost(rate);
         }
         public Project() { }
+
+        public Project(string projectCode, string projectName, DateTime startDate, DateTime endDate, int duration, double estimatedCost)
+        {
+            ProjectCode = projectCode;
+            ProjectName = projectName;
+            StartDate = startDate;
+            EndDate = endDate;
+            Duration = duration;
+            EstimatedCost = estimatedCost;
+        }
 
         public double CalcEstimatedCost(double hourlyRate)
         {
@@ -244,6 +260,36 @@ namespace ProjectLibrary
 
         //•	Create a delegate and event that will give notification when a project has 5 days left before it’s end date.
 
+        public void AddProjects()
+        {
+            string strInsert = $"Insert into tblProject Values('{ProjectCode}', '{projectName}', '{StartDate.ToString("yyyy-MM-dd")}','{EndDate.ToString("yyyy-MM-dd")}', {Duration}, {EstimatedCost})";
 
+            using(SqlConnection con= new SqlConnection(strCon))
+            {
+                SqlCommand cmd = new SqlCommand(strInsert, con);
+                con.Open();
+                cmd.ExecuteNonQuery();
+            }
+        }
+
+        public List<Project> AllProjects()
+        {
+            List<Project> ls = new();
+            using(SqlConnection con=new SqlConnection(strCon))
+            {
+                string strSelect = "select * from tblProject";
+                SqlCommand cmd = new SqlCommand(strSelect, con);
+                con.Open();
+                using(SqlDataReader reader= cmd.ExecuteReader())
+                {
+                    while (reader.Read())
+                    {
+                        ls.Add(new((string)reader[0],(string)reader[1], Convert.ToDateTime(reader[2]), 
+                            Convert.ToDateTime(reader[3]), (int)reader[4], (double)reader[5]));
+                    }
+                }
+            }
+            return ls;
+        }
     }
 }

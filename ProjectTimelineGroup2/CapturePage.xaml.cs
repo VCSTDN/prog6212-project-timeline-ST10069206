@@ -21,9 +21,13 @@ namespace ProjectTimelineGroup2
     /// </summary>
     public partial class CapturePage : Page
     {
+        //DateTime semesterDate = Convert.ToDateTime("04-09-2023");
+
         public CapturePage()
         {
             InitializeComponent();
+            //dateStart.DisplayDateStart = semesterDate;
+            //dateStart.DisplayDateEnd = semesterDate.AddDays(5 * 7);
         }
 
         private void btnSave_Click(object sender, RoutedEventArgs e)
@@ -32,14 +36,13 @@ namespace ProjectTimelineGroup2
             {
                 Project p = new Project(txtCode.Text, txtName.Text, dateStart.SelectedDate.Value, dateEnd.SelectedDate.Value,Convert.ToDouble(txtRate.Text));
                 
-                Project.ProjectList.Add(p);
-
+                //Project.ProjectList.Add(p);
+                p.AddProjects();
                 txtEC.Text = p.EstimatedCost.ToString();
                 txtDuration.Text = p.Duration.ToString();
             }
             catch (Exception ex)
             {
-
                 MessageBox.Show(ex.Message, this.Title, MessageBoxButton.OK, MessageBoxImage.Error);
             }
         }
@@ -53,6 +56,14 @@ namespace ProjectTimelineGroup2
             txtRate.Clear();
             dateEnd.SelectedDate = null; 
             dateStart.SelectedDate=null;
+        }
+
+        private void txtCode_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            if(txtCode.Text.Trim().Length > 0) 
+            {
+                btnSave.IsEnabled = true;
+            }
         }
     }
 }

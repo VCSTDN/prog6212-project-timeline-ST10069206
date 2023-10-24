@@ -10,3 +10,5 @@ C:\Users\lab_services_student\source\repos\ProjectTimelineGroup2\ProjectLibrary\
 C:\Users\lab_services_student\source\repos\ProjectTimelineGroup2\ProjectLibrary\obj\Debug\net7.0\refint\ProjectLibrary.dll
 C:\Users\lab_services_student\source\repos\ProjectTimelineGroup2\ProjectLibrary\obj\Debug\net7.0\ProjectLibrary.pdb
 C:\Users\lab_services_student\source\repos\ProjectTimelineGroup2\ProjectLibrary\obj\Debug\net7.0\ref\ProjectLibrary.dll
+C:\Users\lab_services_student\source\repos\ProjectTimelineGroup2\ProjectLibrary\bin\Debug\net7.0\ProjectLibrary.runtimeconfig.json
+C:\Users\lab_services_student\source\repos\ProjectTimelineGroup2\ProjectLibrary\obj\Debug\net7.0\ProjectLibrary.genruntimeconfig.cache

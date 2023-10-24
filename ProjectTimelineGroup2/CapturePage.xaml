@@ -29,7 +29,7 @@
         <Label x:Name="lblDuration" Content="Duration: " HorizontalAlignment="Left" Margin="50,0,0,0" VerticalAlignment="Center" FontSize="16 " Grid.Row="4"/>
         <Label x:Name="lblEstimatedCost" Content="Estimated Cost: " HorizontalAlignment="Left" VerticalAlignment="Center" FontSize="16 " Grid.Column="1" Grid.Row="3" Margin="50,0,0,0"/>
         <Label x:Name="lblRate" Content="Hourly Rate: " HorizontalAlignment="Left" Margin="50,0,0,0" VerticalAlignment="Center" FontSize="16 " Grid.Row="3"/>
-        <TextBox x:Name="txtCode" HorizontalAlignment="Left" Margin="200,22,0,0" Grid.Row="1" TextWrapping="Wrap"  VerticalAlignment="Top" Width="159" FontSize="16"/>
+        <TextBox x:Name="txtCode" HorizontalAlignment="Left" Margin="200,22,0,0" Grid.Row="1" TextWrapping="Wrap"  VerticalAlignment="Top" Width="159" FontSize="16" TextChanged="txtCode_TextChanged"/>
         <TextBox x:Name="txtRate" HorizontalAlignment="Left" Margin="200,0,0,0" Grid.Row="3" TextWrapping="Wrap"  VerticalAlignment="Center" Width="159" FontSize="16"/>
         <TextBox x:Name="txtDuration" IsEnabled="False" HorizontalAlignment="Left" Margin="200,23,0,0" Grid.Row="4" TextWrapping="Wrap"  VerticalAlignment="Top" Width="159" FontSize="16"/>
         <TextBox x:Name="txtName" HorizontalAlignment="Left" Margin="200,22,0,0" Grid.Row="1" TextWrapping="Wrap"  VerticalAlignment="Top" Width="159" FontSize="16" Grid.Column="1"/>
@@ -37,7 +37,7 @@
         <DatePicker x:Name="dateStart" HorizontalAlignment="Left" Margin="200,0,0,0" Grid.Row="2" VerticalAlignment="Center" Width="159" FontSize="16"/>
         <DatePicker x:Name="dateEnd" HorizontalAlignment="Left" Margin="200,0,0,0" Grid.Row="2" VerticalAlignment="Center" Width="159" FontSize="16" Grid.Column="1"/>
         <Label x:Name="lblHeading" Content="Enter Project Details " HorizontalAlignment="Left" VerticalAlignment="Center" FontSize="20 " Margin="304,0,0,0" Grid.ColumnSpan="2" Background="Lavender" />
-        <Button x:Name="btnSave" Grid.Column="1" Content="Save" HorizontalAlignment="Left" Margin="50,0,0,0" Grid.Row="5" VerticalAlignment="Center" Width="113" FontSize="16" BorderBrush="Gray" BorderThickness="2" Background="Lavender" Click="btnSave_Click"/>
+        <Button x:Name="btnSave" IsEnabled="False" Grid.Column="1" Content="Save" HorizontalAlignment="Left" Margin="50,0,0,0" Grid.Row="5" VerticalAlignment="Center" Width="113" FontSize="16" BorderBrush="Gray" BorderThickness="2" Background="Lavender" Click="btnSave_Click"/>
         <Button x:Name="btnClear" Content="Clear" HorizontalAlignment="Left" Margin="246,0,0,0" Grid.Row="5" VerticalAlignment="Center" Width="113" FontSize="16" BorderBrush="Gray" BorderThickness="2" Background="Lavender" Click="btnClear_Click"/>
 
     </Grid>

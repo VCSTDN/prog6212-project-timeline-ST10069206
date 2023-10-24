@@ -16,7 +16,7 @@
                 <DataGridTextColumn Header="Start Date" Width="*" Binding="{Binding StartDate}"/>
                 <DataGridTextColumn Header="End Date" Width="*" Binding="{Binding EndDate}"/>
                 <DataGridTextColumn Header="Duration" Width="*" Binding="{Binding Duration}"/>
-                <DataGridTextColumn Header="Estimated Cost" Width="*" Binding="{Binding EstimayedCost}"/>
+                <DataGridTextColumn Header="Estimated Cost" Width="*" Binding="{Binding EstimatedCost}"/>
             </DataGrid.Columns> "/>
         </DataGrid>
     </Grid>
