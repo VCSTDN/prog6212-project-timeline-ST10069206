@@ -14,9 +14,6 @@ namespace ProjectLibrary
 {
     public class Project
     {
-        // connection string: 
-        static string strCon = "Data Source=(LocalDB)\\MSSQLLocalDB;Initial Catalog=ProjectDB;Integrated Security=True";
-
         public string? ProjectCode { get; set; }
         private string? ProjectName;
 
@@ -264,7 +261,7 @@ namespace ProjectLibrary
         {
             string strInsert = $"Insert into tblProject Values('{ProjectCode}', '{projectName}', '{StartDate.ToString("yyyy-MM-dd")}','{EndDate.ToString("yyyy-MM-dd")}', {Duration}, {EstimatedCost})";
 
-            using(SqlConnection con= new SqlConnection(strCon))
+            using(SqlConnection con=Connections.GetConnection())
             {
                 SqlCommand cmd = new SqlCommand(strInsert, con);
                 con.Open();
@@ -275,7 +272,7 @@ namespace ProjectLibrary
         public List<Project> AllProjects()
         {
             List<Project> ls = new();
-            using(SqlConnection con=new SqlConnection(strCon))
+            using(SqlConnection con=Connections.GetConnection())
             {
                 string strSelect = "select * from tblProject";
                 SqlCommand cmd = new SqlCommand(strSelect, con);
