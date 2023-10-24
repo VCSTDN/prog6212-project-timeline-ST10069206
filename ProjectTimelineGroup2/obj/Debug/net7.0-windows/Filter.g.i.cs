@@ -77,7 +77,7 @@ namespace ProjectTimelineGroup2 {
                 return;
             }
             _contentLoaded = true;
-            System.Uri resourceLocater = new System.Uri("/ProjectTimelineGroup2;component/filter.xaml", System.UriKind.Relative);
+            System.Uri resourceLocater = new System.Uri("/ProjectTimelineGroup2;V1.0.0.0;component/filter.xaml", System.UriKind.Relative);
             
             #line 1 "..\..\..\Filter.xaml"
             System.Windows.Application.LoadComponent(this, resourceLocater);
